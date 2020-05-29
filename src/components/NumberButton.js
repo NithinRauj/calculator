@@ -1,13 +1,11 @@
 import React from 'react';
-import { SET_NUMBER } from '../types';
+import { SET_OPERAND } from '../types';
 import { connect } from 'react-redux';
 
-const ButtonItem = ({ dispatch, number, currentState }) => {
-  debugger;
+const ButtonItem = ({ dispatch, number }) => {
   const onClick = () => {
-    debugger;
     dispatch({
-      type: SET_NUMBER,
+      type: SET_OPERAND,
       payload: number,
     });
   };
@@ -18,8 +16,5 @@ const ButtonItem = ({ dispatch, number, currentState }) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  currentState: state,
-});
 
-export default connect(mapStateToProps)(ButtonItem);
+export default connect()(ButtonItem);

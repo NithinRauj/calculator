@@ -30,3 +30,10 @@
   text-align: center;
   width: 30%;
 }
+
+.history-item {
+  border: 1px solid black;
+  margin-left: 475px;
+  padding: 10px 0;
+  width: 20%;
+}

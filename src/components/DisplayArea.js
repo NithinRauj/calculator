@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const InputArea = ({ currentState }) => {
   console.log(currentState);
-  return <div className='input-area'>{currentState.operand1}</div>;
+  return <div className='input-area'>{currentState.displayValue}</div>;
 };
 
 const mapStateToProps = (state) => ({

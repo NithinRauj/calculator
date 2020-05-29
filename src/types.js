@@ -1,5 +1,8 @@
-export const SET_NUMBER = 'SET_NUMBER';
+export const SET_OPERAND = 'SET_OPERAND';
+export const SET_OPERATION = 'SET_OPERATION';
 export const ADD_NUMBERS = 'ADD_NUMBERS';
 export const SUBTRACT_NUMBERS = 'SUBTRACT_NUMBERS';
 export const MULTIPLY_NUMBERS = 'MULTIPLY_NUMBERS';
 export const DIVIDE_NUMBERS = 'DIVIDE_NUMBERS';
+export const CLEAR_DATA = 'CLEAR_DATA';
+export const TOGGLE_HISTORY = 'TOGGLE_HISTORY';
