@@ -16,6 +16,7 @@ const initialState = {
   hasFirstOperand: false,
   displayValue: null,
   result: null,
+  prevResult: null,
   history: [],
   showHistory: false,
 };
@@ -37,12 +38,22 @@ export default (state = initialState, action) => {
         };
       }
     case SET_OPERATION:
-      return {
-        ...state,
-        operation: action.payload,
-        displayValue: '',
-        hasFirstOperand: true,
-      };
+      if (state.prevResult) {
+        return {
+          ...state,
+          operation: action.payload,
+          displayValue: '',
+          operand1: state.prevResult,
+          hasFirstOperand: true,
+        };
+      } else {
+        return {
+          ...state,
+          operation: action.payload,
+          displayValue: '',
+          hasFirstOperand: true,
+        };
+      }
 
     case ADD_NUMBERS:
       let add_result = state.operand1 + state.operand2;
@@ -57,6 +68,7 @@ export default (state = initialState, action) => {
         ...state,
         result: add_result,
         displayValue: add_result,
+        prevResult: add_result,
         operand1: 0,
         operand2: 0,
         operation: null,
@@ -77,6 +89,7 @@ export default (state = initialState, action) => {
         ...state,
         result: subtract_result,
         displayValue: subtract_result,
+        prevResult: subtract_result,
         operand1: 0,
         operand2: 0,
         operation: null,
@@ -96,6 +109,7 @@ export default (state = initialState, action) => {
         ...state,
         result: multiply_result,
         displayValue: multiply_result,
+        prevResult: multiply_result,
         operand1: 0,
         operand2: 0,
         operation: null,
@@ -115,6 +129,7 @@ export default (state = initialState, action) => {
         ...state,
         result: division_result,
         displayValue: division_result,
+        prevResult: division_result,
         operand1: 0,
         operand2: 0,
         operation: null,
@@ -131,6 +146,7 @@ export default (state = initialState, action) => {
         hasFirstOperand: false,
         displayValue: null,
         result: null,
+        prevResult: null,
       };
 
     case TOGGLE_HISTORY:

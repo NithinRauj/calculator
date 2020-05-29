@@ -2,12 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const History = ({ currentState }) => {
-  //   if (currentState.history.length === 0)
-  //     return (
-  // <h2 style={{ textAlign: 'center', paddingTop: '15px' }}>
-  //   No history found
-  // </h2>
-  //     );
   if (currentState.showHistory) {
     return (
       <div style={{ textAlign: 'center', paddingTop: '15px' }}>
