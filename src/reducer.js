@@ -14,6 +14,7 @@ const initialState = {
   operand2: 0,
   operation: null,
   hasFirstOperand: false,
+  hasOperation: false,
   displayValue: null,
   result: null,
   prevResult: null,
@@ -45,6 +46,7 @@ export default (state = initialState, action) => {
           displayValue: '',
           operand1: state.prevResult,
           hasFirstOperand: true,
+          hasOperation: true,
         };
       } else {
         return {
@@ -52,6 +54,7 @@ export default (state = initialState, action) => {
           operation: action.payload,
           displayValue: '',
           hasFirstOperand: true,
+          hasOperation: true,
         };
       }
 
@@ -73,6 +76,7 @@ export default (state = initialState, action) => {
         operand2: 0,
         operation: null,
         hasFirstOperand: false,
+        hasOperation: false,
         history: [...state.history, add_obj],
       };
 
@@ -94,6 +98,7 @@ export default (state = initialState, action) => {
         operand2: 0,
         operation: null,
         hasFirstOperand: false,
+        hasOperation: false,
         history: [...state.history, sub_obj],
       };
 
@@ -118,7 +123,7 @@ export default (state = initialState, action) => {
       };
 
     case DIVIDE_NUMBERS:
-      let division_result = state.operand1 / state.operand2;
+      let division_result = Math.round(state.operand1 / state.operand2);
       let div_obj = {
         op1: state.operand1,
         op2: state.operand2,

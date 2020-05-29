@@ -12,8 +12,34 @@ import {
 
 const OpButton = ({ currentState, dispatch, operation }) => {
   const onClick = () => {
-    if (operation !== 'C' && operation !== 'H' && operation !== '=') {
+    if (
+      operation !== 'C' &&
+      operation !== 'H' &&
+      operation !== '=' &&
+      !currentState.hasOperation
+    ) {
       dispatch({ type: SET_OPERATION, payload: operation });
+    } else if (operation === 'C') {
+      dispatch({ type: CLEAR_DATA });
+    } else if (operation === 'H') {
+      dispatch({ type: TOGGLE_HISTORY });
+    } else if (currentState.hasOperation && operation !== '=') {
+      if (currentState.operation === '+') {
+        dispatch({ type: ADD_NUMBERS });
+        dispatch({ type: SET_OPERATION, payload: operation });
+      }
+      if (currentState.operation === '-') {
+        dispatch({ type: SUBTRACT_NUMBERS });
+        dispatch({ type: SET_OPERATION, payload: operation });
+      }
+      if (currentState.operation === '*') {
+        dispatch({ type: MULTIPLY_NUMBERS });
+        dispatch({ type: SET_OPERATION, payload: operation });
+      }
+      if (currentState.operation === '/') {
+        dispatch({ type: DIVIDE_NUMBERS });
+        dispatch({ type: SET_OPERATION, payload: operation });
+      }
     } else if (currentState.operation && operation === '=') {
       if (currentState.operation === '+') {
         dispatch({ type: ADD_NUMBERS });
@@ -27,10 +53,6 @@ const OpButton = ({ currentState, dispatch, operation }) => {
       if (currentState.operation === '/') {
         dispatch({ type: DIVIDE_NUMBERS });
       }
-    } else if (operation === 'C') {
-      dispatch({ type: CLEAR_DATA });
-    } else if (operation === 'H') {
-      dispatch({ type: TOGGLE_HISTORY });
     }
   };
   return (
